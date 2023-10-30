@@ -1,0 +1,88 @@
+<html>
+    <head>
+     <style>
+        #d1{
+            display: none;
+        }
+       #d1:target{
+            display:block;
+       }
+        
+        
+     </style>
+     
+    </head>
+    <body>
+        <ul>
+            <li><a href="#d1">Login</a></li>
+        </ul>
+        <form>
+        <h2>Registration Form</h2>
+        Role:
+        <select class="form-select w-25">
+            <option>Student</option>
+            <option>Faculty</option>
+            <option>Admin</option>
+        </select><br>
+
+        Userame:<input type="text" id="txtName"><br>
+        Password:<input type="password" id="txtPassword" minlength="8"><br>
+        Email:<input type="email" id="txtEmail"><br>
+        <input type="button" value="Register" onclick="funReadData()">
+        </form>
+        <div id="d1">
+            <h2>Login Form</h2>
+            <form>
+                Name:<input type="text" id="txtUName"><br>
+                Password:<input type="password" id="txtUPass"><br>
+                <input type="button" value="Login" onclick="funLogin()">
+            </form>
+        </div>
+        <div id="d1"></div>
+        <script>
+            var d1=document.getElementById("d1");
+            var users=[];
+            function User(name,pass,email){
+                this.userName=name;
+                this.userPassword=pass;
+                this.userEmail=email;
+            }
+
+            function funCheck(){
+             for(j=0;j<localStorage.length;j++){
+                var k=localStorage.key(j);
+                if(k=="userRec"){
+                    users=JSON.parse(localStorage.getItem("userRec"));
+                }
+             }
+            }
+
+            function funReadData(){
+                funCheck();
+                var name=document.getElementById("txtName").value;
+                var password=document.getElementById("txtPassword").value;
+                var email=document.getElementById("txtEmail").value;
+
+                var obj=new User(name,password,email);
+                users.push(obj);
+                localStorage.setItem("userRec",JSON.stringify(users));
+                d1.innerHTML="<br>Your are Registered suceessfully!!!"+obj.userName;
+
+            }
+            function funLogin(){
+                var uname=document.getElementById("txtUName").value;
+                var pass=document.getElementById("txtUPass").value;
+                 
+                var data=JSON.parse(localStorage.getItem("userRec"));
+                for(i=0;i<data.length;i++){
+                    if(uname==data[i].userName && pass==data[i].userPassword){
+                        d1.innerHTML +="Login SuccessFully!!";
+                    }
+                }
+               
+                
+            }
+
+        </script>
+    </body>
+</html>

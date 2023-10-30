@@ -1,0 +1,26 @@
+<heml>
+    <head>
+
+    </head>
+    <body>
+        Num1:<input type="text" id="txtNum1"><br>
+        Num2:<input type="text" id="txtNum2"><br>
+        <input type="button" value="product" onclick="funProduct()">
+        <div id="d1"></div>
+
+        <script>
+            var d1=document.getElementById("d1");
+            function funProduct(){
+                var num1=parseInt(document.getElementById("txtNum1").value);
+                var num2=parseInt(document.getElementById("txtNum2").value);
+                var product=0;
+               for(var i=0;i<num2;i++){
+                product += num1;
+               }
+               document.getElementById("d1").innerHTML ="Product: " + product;
+            }
+
+            
+        </script>
+    </body>
+</heml>

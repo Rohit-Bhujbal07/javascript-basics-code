@@ -1,0 +1,50 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td>RollNo</td>
+                <td>Name</td>
+                <td>Marks</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>aaa</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ddd</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>eee</td>
+                <td>40</td>
+            </tr>
+
+        </table>
+        <div id="d1"></div>
+        <script>
+            var tbl1=document.querySelector("table");
+            tbl1.addEventListener("click",funClick,false);
+
+            var d1=document.getElementById("d1");
+
+            function funClick(event){
+
+                var n=event.target.cellIndex;
+                var arr=document.getElementsByTagName("tr");
+
+                for(i=0;i<arr.length;i++){
+                    arrTD=arr[i].getElementsByTagName("td");
+                    arr[i].removeChild(arrTD[n]);
+                }
+                
+            }
+         
+        </script>
+    </body>
+</html>

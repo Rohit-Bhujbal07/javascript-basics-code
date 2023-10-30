@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <style>
+            img{
+                width:200px;
+                height: 200px;
+                border: 2px black;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="d1">
+
+        </div>
+        <img id="img1" src=""><br>
+        <input type="button" value="Start" onclick="funStart()">
+        <input type="button" value="Fast" onclick="funFast()">
+        <input type="button" value="Slow" onclick="funSlow()">
+        <input type="button" value="Stop" onclick="funStop()">
+
+
+        <script>
+
+
+           var d1=document.getElementById("d1");
+    
+           
+           var imgArr=['Pants.jpg','T-shirt.jpg','TV.jpg','WallClock.jpg'];
+            var i=0;
+            var sI;
+            var img1=document.getElementById("img1");
+            function changeImage(){
+                img1.src=imgArr[i];
+               // document.body.style.backgroundImage='url('+imgArr[i]+')';
+                i++;
+                if(i==imgArr.length){
+                    i=0;
+                }
+            }
+
+            function funStart(){
+                sI=setInterval("changeImage()",1000);
+            }
+
+            function funFast(){
+                clearInterval(sI);
+                sI=setInterval("changeImage()",500);
+            }
+
+            function funSlow(){
+                clearInterval(sI);
+                sI=setInterval("changeImage()",2000);
+            }
+
+
+            function funStop(){
+                clearInterval(sI);
+            }
+
+        </script>
+    </body>
+</html>

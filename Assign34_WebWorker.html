@@ -1,0 +1,50 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        Number:<input type="text" id="txtNum"><br>
+        <input type="button" value="Add" onclick="funAdd()">
+        <input type="BUTTON" VALUE="SORT" onclick="sendMsg()">
+        <ul id="d1"></ul>
+
+        <script>
+             
+             
+
+            var w=new Worker("Assign34.js");
+            w.addEventListener("message",getMsg,false);
+
+             var numArr=[];
+            function funAdd(){
+           
+            var num=document.getElementById("txtNum").value;
+            if(!isNaN(num)){
+                if(numArr.length<5){
+                 numArr.push(num);
+                 document.getElementById("d1").innerHTML="";
+                 for(i=0;i<numArr.length;i++){
+                
+                 document.getElementById("d1").innerHTML+="<li>" + numArr[i] +"</li>";
+
+               }
+        }else{
+            alert("NumArray have more than 5 numbers");
+        }
+        }
+        else{
+            alert(" invalid input is not a number");
+        }
+        }
+        function sendMsg(){
+                //console.log("send Msg");
+                w.postMessage(numArr);
+            }
+
+            function getMsg(event){
+               d1.innerHTML=event.data;
+            }
+        </script>
+    </body>
+    
+</html>

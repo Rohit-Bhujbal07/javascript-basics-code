@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <style>
+            div{
+                width:100px;
+                height:100px;
+                border:2px solid black;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <div id="d1" ondrop="dropHandler(event)" ondragOver="dragoverHandler(event)">
+            <ul ondragstart="dragstartHandler(event)">
+                <li draggable="true">red</li>
+                <li draggable="true">blue</li>
+                <li draggable="true">black</li>
+                <li draggable="true">green</li>
+        
+                </ul>
+        
+        </div>
+        <div id="d2" ondrop="dropHandler(event)" ondragOver="dragoverHandler(event)"></div>
+        
+        <script>
+               function dragstartHandler(event){
+                x=event.target;
+                event.dataTransfer.setData("text/plain",event.target.textContent);
+                
+                
+               }
+               function dragoverHandler(event){
+                event.preventDefault();
+               }
+               function dropHandler(event){
+                
+                var txt=event.dataTransfer.getData("text/plain");
+                event.currentTarget.innerHTML+=txt+"<br>";
+                x.parentNode.removeChild(x);
+                }
+                
+        </script>
+    </body>
+</html>

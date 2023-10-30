@@ -1,0 +1,54 @@
+<html>
+    <head>
+    <style>
+        div{
+            border:1px solid black;
+            width:250px;
+            height:200px;
+        } 
+        
+    </style>
+    </head>
+    <body>
+        <div id="d1">
+            <ul id="list">
+            <li>Red</li>
+            <li>blue</li>
+            <li>Black</li>
+            <li>Yellow</li>
+            </ul>
+        </div><br>
+        <div id="d2">
+            
+     </div>
+
+        <input type="button" value="<" onclick="funForwd()">
+        <input type="button" value="<<" onclick="funDoubleBackwd()">
+        <input type="button" value=">>" onclick="funDoubleForwd()">
+        <input type="button" value=">" onclick="funBackwd()">
+
+        <script>
+            function funForwd(){
+            var d1=document.getElementById("d1");
+            var d2=document.getElementById("d2");
+            var liNew=d1.querySelector("li");
+            d2.appendChild(liNew);
+            }
+
+            function funBackwd(){
+                var d1=document.getElementById("d1");
+                var d2=document.getElementById("d2");
+                var liNew=d2.querySelector("li")
+                d1.appendChild(liNew);
+            }
+
+            function funDoubleBackwd(){
+                var d1=document.getElementById("d1");
+                var d2=document.getElementById("d2");
+                var liNew=d1.querySelector("list");
+                d2.appendChild(liNew);
+            }
+
+        </script>
+    </body>
+</html>

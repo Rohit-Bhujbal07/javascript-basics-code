@@ -1,0 +1,20 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="d1"></div>
+        <script>
+            var d1=document.getElementById("d1");
+            var str=" ab cd ef ";
+            var res="";
+            for(i=0;i<str.length;i++){
+                if(str[i] != " "){
+            res += str[i];
+           }
+            }
+            console.log(res);
+            d1.innerHTML +="After removing spaces String: " +res;
+        </script>
+    </body>
+</html>

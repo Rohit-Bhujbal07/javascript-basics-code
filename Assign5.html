@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        Enter the Number:<input type="text" id="txtNum"><br>
+        <input type="button" value="Insert" onclick="fun()">
+        <ul id="d1"></ul>
+        <script>
+            function fun(){
+                var Number =document.getElementById("txtNum").value;
+               document.getElementById("d1").innerHTML+="<li>" + Number +"</li>";
+
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        Name:<input type="text" id="txtName"><br>
+        Price:<input type="text" id="txtPrice"><br>
+        <input type="button" value="Insert" id="btnInsert">
+        <input type="button" value="AddToCart" id="btnAddToCart">
+        <div id="d1"></div>
+        
+        <script>
+             var productArr=[];
+             var d1=document.getElementById("d1");
+             var btnInsert=document.getElementById("btnInsert");
+             btnInsert.addEventListener("click",funInsert,false);
+
+             function Product(name,value){
+                this.prodName=name;
+                this.Price=value;
+            }
+
+            function funInsert(){
+                var txtName= document.getElementById("txtName").value;
+                var txtPrice= document.getElementById("txtPrice").value;
+                var obj=new Product(txtName,txtPrice);
+                productArr.push(obj);
+                display();
+                
+            }
+            function display(){
+                var str="";
+                for(i=0;i<productArr.length;i++){
+                    str+="<li>"+productArr[i].prodName+"*"+productArr[i].Price+"</li>";
+                }
+                d1.innerHTML=str;
+            }
+
+        </script>
+    </body>
+</html>

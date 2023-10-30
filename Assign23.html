@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <style>
+            img{
+                width: 100px;
+                height: 100px;
+                border: 2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        Select category: <select id="sel" onchange="funChange()"><option>select</option></select>
+        
+        <table></table>
+        <p></p>
+        <script>
+             var productArr=[{ pid:101,category:'Electronic',pName:"WashingMachine",pPrice:30000,pImage:'WashingMachine.jpg'},
+                          { pid:102,category:'Electronic',pName:"TV",pPrice:25000,pImage:'TV.jpg'},
+                          { pid:201,category:'clothing',pName:"T-shirts",pPrice:250,pImage:'T-shirt.jpg'},
+                          { pid:202,category:'clothing',pName:"Pants",pPrice:400,pImage:'Pants.jpg'},
+                          { pid:301,category:'HomeDecor',pName:"PhotoFrame",pPrice:500,pImage:'Photoframe.jpg'},
+                          { pid:302,category:'HomeDecor',pName:"WallClock",pPrice:400,pImage:'WallClock.jpg'}
+
+                        ];
+
+                        var str="";
+                         for(i=0;i<productArr.length;i++){
+                            var x=productArr[i].category;
+                            for(j=i+1;j<productArr.length;j++){
+                                if(productArr[i].category==productArr[j].category){
+                                    x=productArr[j].category;
+
+                                }
+                                else{
+                                    x=productArr[i].category;
+                                }
+                            }
+                            str+="<option>"+x+"</option>";
+                         }
+
+                         document.getElementById("sel").innerHTML+=str;
+
+               function funChange() {
+                      var txtsel = document.getElementById("sel").value;
+                      var str = "";
+                      for (i = 0; i < productArr.length; i++) {
+                       if (productArr[i].category == txtsel) {
+                        var imgName=productArr[i].pImage;
+                        console.log(imgName);
+                        str +=
+                            "<tr><td><input type='checkbox' onchange=funCheck(event) value=" +
+                            productArr[i].pName +"></td><td>"+productArr[i].pName +"</td><td>"+productArr[i].pPrice +"</td><td><img src="+
+                            imgName+"></td></tr>";//+productArr[i].pName+"'>";
+                    }
+                }
+                document.querySelector("table").innerHTML = str;
+            }
+            
+               var total=[];
+             function funCheck(event){
+                            var sum=0;
+                             var checkValue=event.currentTarget;
+                             if(checkValue.checked){
+                                for(i=0;i<productArr.length;i++){
+                                    if(productArr[i].pName==checkValue.value){
+                                        total.push(productArr[i]);
+                                    
+                                    }
+                                }
+                             }
+                             else{
+                                for(i=0;i<total.length;i++){
+                                    if(total[i].pName==checkValue.value){
+                                        total.splice(i,1);
+                                    }
+                                }
+                                
+                             }
+                             var str1="";
+                             console.log(total);
+                             for(j=0;j<total.length;j++){
+                                str1+="<br>"+total[j].pName+"-----"+total[j].pPrice;
+                                sum=sum+parseInt(total[j].pPrice);
+                             }
+
+                             document.querySelector("p").innerHTML=str1+"<br>Total="+sum;
+                         }
+        </script>
+    </body>
+</html>

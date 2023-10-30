@@ -1,0 +1,72 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        Search:<input type="text" id="txtSearch"><br>
+        <input type="button" value="Click" onclick="fun()">
+     <div id="d1"></div>
+    </body>
+    <script>
+        var d1=document.getElementById("d1");
+
+        // Removing duplicate elements from array
+
+        
+        // var arr=[10,20,30,10,20,2];
+        // var newArr = [];
+    
+        // for(i=0;i<arr.length;i++){
+        //     if(newArr.indexOf(arr[i]) == -1){
+        //       newArr.push(arr[i]);
+        //     }
+            
+        // }
+        // console.log(newArr);
+        // d1.innerHTML+="New array:"+ newArr;
+        
+        
+        //makes Square of array number
+        
+        // var arr=[1,2,3,4,5];
+        // var sqrtArr =[];
+
+        // for(i=0;i<arr.length;i++){
+        //     sqrtArr.push(arr[i]*arr[i]);
+
+        // }
+        // console.log(sqrtArr);
+        // d1.innerHTML+="Square of the Array Number: "+sqrtArr;
+        
+        // Removing spaces from the string
+        // var str=" this is bitcode ";
+        // var ex="";
+        // for(i=0;i<str.length;i++){
+        //    if(str[i] !== " "){
+        //     ex += str[i];
+        //    }
+        // }
+        // console.log(ex);
+        // d1.innerHTML+=ex;
+        
+       // Array search
+       function fun(){
+       var arr=[1,2,3,4,5];
+       var searchValue = document.getElementById("txtSearch").value;
+       var found=false;
+      // var searchOp="";
+       for(i=0;i<arr.length;i++){
+          if(arr[i]==searchValue){
+            d1.innerHTML+="<br>"+txtSearch+"Found at index"+i;
+           found = true;
+          }
+        
+        }
+        if(found==false){
+          d1.innerHTML +="<br>Not found!!";
+          }
+       
+       }
+    </script>
+
+</html>

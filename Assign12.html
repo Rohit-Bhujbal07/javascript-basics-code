@@ -1,0 +1,39 @@
+<html>
+    <head>
+
+    </head>
+    <style>
+      div{
+            border:1px solid black;
+            width:250px;
+            height:200px;
+        } 
+        
+    </style>
+    <body>
+    <div id="d1" style="background-color: red;"></div><br>
+    <div id="d2" style="background-color:blue;"></div><br>
+    <div id="d3" style="background-color:yellow;"></div><br>
+    <script>
+        var divArr=document.getElementsByTagName("div");
+        for(i=0;i<divArr.length;i++){
+            divArr[i].addEventListener("mouseover",fun1,false);
+            divArr[i].addEventListener("mouseout",fun1,false);
+             
+        }
+            function fun1(event){
+                if(event.type=='mouseover'){
+                   document.bgColor=event.currentTarget.style.backgroundColor;
+                   console.log(bgColor);
+                }
+                else if(event.type=='mouseout'){
+                    document.bgColor='transparent';
+                }
+            } 
+
+            
+            
+    </script>
+    </body>
+
+</html>

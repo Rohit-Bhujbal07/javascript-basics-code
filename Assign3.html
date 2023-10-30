@@ -1,0 +1,19 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        Firstname:<input type="text" id="txtFirstname"><br>
+        Lastname:<input type="text" id="txtLastname"><br>
+        <input type="button" value="Click" onclick="fun()">
+        <div id="d1"></div>
+        <script>
+            function fun(){
+                var firstname=document.getElementById("txtFirstname").value;
+                var lastname=document.getElementById("txtLastname").value;
+                //document.getElementById("d1").textContent = "<b>Your name is " + firstname + lastname + "</b>";
+                d1.innerHTML= "<b>Your name is " + firstname +" "+ lastname + "</b>";
+            }
+        </script>
+    </body>
+</html>

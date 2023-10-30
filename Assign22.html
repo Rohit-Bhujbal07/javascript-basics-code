@@ -1,0 +1,85 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        Select category: <select id="sel" onchange="funChange()"><option>select</option></select>
+        
+        <div></div>
+        <p></p>
+        <script>
+             var bookArr=[{category:'history',bookName:"Pawankhid",bookPrice:400},
+                          {category:'history',bookName:"khosla",bookPrice:300},
+                          {category:'comic',bookName:"champak",bookPrice:200},
+                          {category:'comic',bookName:"ChotaBheem",bookPrice:100},
+                          {category:'science',bookName:"bio",bookPrice:490} 
+                        ];
+
+
+                         var str="";
+                         for(i=0;i<bookArr.length;i++){
+                            var x=bookArr[i].category;
+                            for(j=i+1;j<bookArr.length;j++){
+                                if(bookArr[i].category==bookArr[j].category){
+                                    x=bookArr[j].category;
+
+                                }
+                                else{
+                                    x=bookArr[i].category;
+                                }
+                            }
+                            str+="<option>"+x+"</option>";
+                         }
+
+                         document.getElementById("sel").innerHTML+=str;
+
+                         function funChange(){
+
+                            var txtSel=document.getElementById("sel").value;
+                            var str="";
+                            for(i=0;i<bookArr.length;i++){
+                                if(bookArr[i].category == txtSel){
+                                    str+="<br><input type='checkbox' onchange=funCheck(event) value="+bookArr[i].bookName+">"+bookArr[i].bookName+"-"+bookArr[i].bookPrice;
+
+                                }    
+                            }
+                            document.querySelector("div").innerHTML=str;
+
+                         }
+                        
+                          var total=[];
+                         function funCheck(event){
+                            var sum=0;
+                             var checkValue=event.currentTarget;
+                             if(checkValue.checked){
+                                for(i=0;i<bookArr.length;i++){
+                                    if(bookArr[i].bookName==checkValue.value){
+                                        total.push(bookArr[i]);
+                                    
+                                    }
+                                }
+                             }
+                             else{
+                                for(i=0;i<total.length;i++){
+                                    if(total[i].bookName==checkValue.value){
+                                        total.splice(i,1);
+                                    }
+                                }
+                                
+                             }
+                             var str1="";
+                             console.log(total);
+                             for(j=0;j<total.length;j++){
+                                str1+="<br>"+total[j].bookName+"-----"+total[j].bookPrice;
+                                sum=sum+parseInt(total[j].bookPrice);
+                             }
+
+                             document.querySelector("p").innerHTML=str1+"<br>Total="+sum;
+                         }
+
+
+        </script>
+        
+    </body>
+    
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <head>
+       <h2>DOM - appendChild Method </h2>
+    </head>
+    <body>
+        <ul id="list">
+            <li>Red</li>
+            <li>blue</li>
+            <li>Black</li>
+            <li>Yellow</li>
+        </ul>
+        <input type="button" value="add" id="btnAdd">
+
+        <script>
+            var btnAdd=document.querySelector("#btnAdd"); 
+            btnAdd.addEventListener("click",funAdd,false);//Here I add the event Listner
+           
+            function funAdd(){
+                var colorName=prompt("Enter color name: ");
+                var ulNew=document.querySelector("#list");//here we fetch the prev list
+                var liNew=document.createElement("li");//here we create new list element
+
+                liNew.textContent=colorName;
+                ulNew.appendChild(liNew);  // here I append the list element to the end of elementlist
+            }
+        </script>
+    </body>
+</html>

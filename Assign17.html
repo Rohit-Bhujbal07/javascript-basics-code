@@ -1,0 +1,94 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        Enter the Number=<input type="text" id="txtNum"><br>
+        <input type="button" value="Insert" id="btnInsert"><br>
+        <input type="button" value="Search" id="btnSearch"><br>
+        <input type="button" value="Delete" id="btnDelete"><br>
+        <input type="button" value="ClearAll" id="btnClear"><br>
+
+        <ul id="list"></ul>
+
+        <script>
+            var btnInsert=document.getElementById("btnInsert");
+            btnInsert.addEventListener("click",funInsert,false);
+
+            var btnSearch=document.getElementById("btnSearch");
+            btnSearch.addEventListener("click",funSearch,false);
+
+            var btnDelete=document.getElementById("btnDelete");
+            btnDelete.addEventListener("click",funDelete,false);
+
+            var btnClear=document.getElementById("btnClear");
+            btnClear.addEventListener("click",funClear,false);
+
+            var list=document.getElementById("list");
+            list.addEventListener("click",funToggle,false);
+            var arrNum=[];
+
+          function funInsert(){
+            var txtNum=parseInt(document.getElementById("txtNum").value);
+            if(isNaN(txtNum)== true){
+                console.log("Invalid input");
+            }
+            else{
+                arrNum.push(txtNum);
+                display();
+            }
+            
+          }
+
+          function display(){
+            var str="";
+            for(i=0;i<arrNum.length;i++){
+                str+="<li>"+arrNum[i]+"</li>";
+            }
+            list.innerHTML=str;
+          }
+
+          function funSearch(){
+            var num=document.getElementById("txtNum").value;
+            var flag=false;
+            for(i=0;i<arrNum.length;i++){
+                if(arrNum[i]==num){
+                    console.log(num+"Found at Index="+i);
+                    ind=i;
+                    flag=true;
+                }
+            }
+            if(flag==false){
+                console.log("Num not Found");  
+            }
+            return ind;
+           
+          }
+
+          function funDelete(){
+            var index=funSearch();
+            console.log("index delete="+index);
+            arrNum.splice(index,1);
+            display();
+          }
+
+          function funClear(){
+            arrNum.splice(0,arrNum.length);
+            console.log("array is Empty!!");
+            display();
+          }
+
+          function funToggle(event){
+            var obj =event.target;
+            if(obj.id==0){
+              obj.id=1;
+              obj.style.backgroundColor="yellow";
+            }
+            else{
+              obj.id=0;
+              obj.style.backgroundColor="transparent";
+            }
+          }
+        </script>
+    </body>
+</html>

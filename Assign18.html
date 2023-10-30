@@ -1,0 +1,32 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        RollNo: <input type="text" id="txtRollNo"><br>
+        Name: <input type="text" id="txtName"><br>
+        Marks: <input type="text" id="txtMarks"><br>
+        <input type="button" value="Click" onclick="fun()">
+        <table id="tb1" border="1"></table>
+        
+        <script>
+            
+            function fun(){
+            
+            
+                var rollno=document.getElementById("txtRollNo").value;
+                var name=document.getElementById("txtName").value;
+                var marks=document.getElementById("txtMarks").value;
+                console.log(rollno,name,marks);
+                var str="";
+                
+             str = "<tr><th>Roll No</th><th>Name</th><th>Marks</th></tr>";
+            str += "<tr><td>" + rollno + "</td><td>" + name + "</td><td>" + marks + "</td></tr>";
+
+             document.getElementById("tb1").innerHTML += str;        
+                
+            }
+
+        </script>
+    </body>
+</html>

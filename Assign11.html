@@ -1,0 +1,35 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="d1"></div>
+    </body>
+    <script>
+        var d1=document.getElementById("d1");
+        var str="java";
+        var count=0;
+        var res=[];
+        d1.innerHTML+="<br>Array="+str;
+        for(i=0;i<str.length;i++){
+            count=1;
+            for(j=i+1;j<str.length;j++){
+                if(str[i]==str[j]){
+                    count++;
+                    res[j]=-1;
+                }
+            }
+            if(res[i]!=-1){
+                res[i]=count;
+            }
+        }
+        d1.innerHTML+="<br>count=";
+        for(i=0;i<res.length;i++){
+            if(res[i]!=-1){
+                d1.innerHTML+="<br>"+str[i]+"="+res[i];
+            }
+        }
+        
+
+    </script>
+</html>

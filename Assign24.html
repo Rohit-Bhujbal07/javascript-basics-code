@@ -1,0 +1,110 @@
+<html>
+<head>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            display: none;
+           /* visibility: hidden;*/
+        }
+    </style>
+  
+</head>
+<body>
+    
+    <label for="subject">Subject:</label>
+    <select id="subject" onchange="fundisplayy()">
+      <option value="" ></option>
+      <option value="Angular" >Angular</option>
+      <option value="React">React</option>
+      <option value="Java">Java</option>
+    </select>
+    <br><br>
+  <form id="infoForm" style="display:none;">
+    
+
+    <label for="task">Task:</label>
+    <input type="text" id="task">
+    <br><br>
+
+    <label for="status">Status:</label>
+    <input type="text" id="status">
+    <br><br>
+
+    <label for="description">Description:</label>
+    <input type="description" id="description">
+    <br><br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date">
+    <br><br>
+
+    <button type="button" onclick="funAdd()">Add</button>
+    <button type="button" onclick="funDisplay()">Display </button>
+
+  </form>
+
+   <div id="d1"></div>
+  <script>
+    function  fundisplayy(){
+      document.getElementById("infoForm").style.display="block";
+
+    }
+
+        document.getElementById("infoForm").addEventListener("submit", function(event) {
+      event.preventDefault()});
+     
+      
+
+      var formInfo =[];
+
+      function funAdd(){
+
+      var subject = document.getElementById("subject").value;
+      var task = document.getElementById("task").value;
+      var status = document.getElementById("status").value;
+      var description = document.getElementById("description").value;
+      var date = document.getElementById("date").value;
+
+      
+      var information = {
+        subject: subject,
+        task: task,
+        status: status,
+        description: description,
+        date: date
+      };
+
+      formInfo.push(information);
+      console.log(information);
+
+      document.getElementById("task").value = "";
+      document.getElementById("status").value = "";
+      document.getElementById("description").value = "";
+      document.getElementById("date").value = "";
+
+      funDisplay();
+    }
+
+    
+
+    function funDisplay(){
+        var subject = document.getElementById("subject").value;
+        var task = document.getElementById("task").value;
+        var status = document.getElementById("status").value;
+        var description = document.getElementById("description").value;
+        var date = document.getElementById("date").value;
+       
+       var d1 = document.getElementById("d1");
+       d1.innerHTML = "Subject: " + subject + "<br>" +
+                         "Task: " + task + "<br>" +
+                         "Status: " + status + "<br>" +
+                         "Description: " + description + "<br>" +
+                         "Date: " + date;
+                        // d1.style.visibility="visible";
+                         d1.style.display = "block";
+    }
+  </script>
+</body>
+</html>

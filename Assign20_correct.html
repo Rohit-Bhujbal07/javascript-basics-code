@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                border: 2px solid black;
+                /*display: none;*/
+                visibility: hidden;
+            }
+        </style>
+
+    </head>
+    <body>
+        Product Name:<input type="text" id="txtName"><br>
+        Price:<input type="text" id="txtPrice"><br>
+        <input type="button" value="Insert" id="btnInsert">
+        <input type="button" value="Update" id="btnUpdate">
+        <input type="button" value="Delete" id="btnDelete">
+        <input type="button" value="AddToCart" id="btnCart">
+        <ul id="list"></ul>
+
+        <div id="d1"></div>
+
+        <script>
+        var productArr=[];
+        var list=document.getElementById("list");
+        list.addEventListener("click",funClick,false);
+
+        var btnInsert=document.getElementById("btnInsert");
+        btnInsert.addEventListener("click",funInsert,false);
+
+        var btnUpdate=document.getElementById("btnUpdate");
+        btnUpdate.addEventListener("click",funUpdate,false);
+
+        var btnDelete=document.getElementById("btnDelete");
+        btnDelete.addEventListener("click",funDelete,false);
+
+        var btnCart=document.getElementById("btnCart");
+        btnCart.addEventListener("click",funCart,false);
+
+        
+        function Product(name,value){
+                this.prodName=name;
+                this.Price=value;
+            }
+            function funCheck(){
+             for(j=0;j<localStorage.length;j++){
+                var k=localStorage.key(j);
+                if(k=="productRec"){
+                    productArr=JSON.parse(localStorage.getItem("productRec"));
+                }
+             }
+            }
+            function funReadData(){
+                funCheck();
+                var name=document.getElementById("txtName").value;
+                var price=document.getElementById("txtPrice").value;
+                
+
+                var obj=new User(name,price);
+                productArr.push(obj);
+                localStorage.setItem("userRec",JSON.stringify(productArr));
+                d1.innerHTML="<br>Your are Registered suceessfully!!!"+obj.prodName;
+
+            }
+
+            function funInsert(){
+                var txtName= document.getElementById("txtName").value;
+                var txtPrice= document.getElementById("txtPrice").value;
+                var obj=new Product(txtName,txtPrice);
+                productArr.push(obj);
+                display();
+                
+            }
+            function display(){
+                var str="";
+                for(i=0;i<productArr.length;i++){
+                    str+="<li>"+productArr[i].prodName+"*"+productArr[i].Price+"</li>";
+                }
+                list.innerHTML=str;
+            }
+
+            function funClick(event){
+              var str=event.target.textContent;
+              arr=str.split("*");
+              document.getElementById("txtName").value=arr[0];
+              document.getElementById("txtPrice").value=arr[1];
+              document.getElementById("txtName").disabled=true;
+
+            }
+
+            function funUpdate(){
+                var name= document.getElementById("txtName").value;
+                var newPrice= document.getElementById("txtPrice").value;
+                for(i=0;i<productArr.length;i++){
+                    if(name==productArr[i].prodName){
+                        productArr[i].Price=newPrice;
+                    break;                    
+                }
+            }
+            document.getElementById("txtName").value="";
+            document.getElementById("txtPrice").value="";
+            document.getElementById("txtName").disabled=false;
+            display();
+       }
+       
+       
+       
+       function funDelete(){
+        var txtName= document.getElementById("txtName").value;
+
+        for(i=0;i<productArr.length;i++){
+            if(productArr[i].prodName == txtName){
+                productArr.splice(i,1);
+            }
+        }
+            document.getElementById("txtName").value="";
+            document.getElementById("txtPrice").value="";
+            document.getElementById("txtName").disabled=false;
+            display();
+       }
+
+        //var cart=[];
+        var d1=document.getElementById("d1");
+        var sum=0;
+        var str1="";
+
+       function funCart(){
+        var txtName= document.getElementById("txtName").value;
+        var txtPrice= document.getElementById("txtPrice").value;
+
+        for(i=0;i<productArr.length;i++){
+            if(productArr[i].prodName==txtName){
+                str1+="<br>"+productArr[i].prodName+"--"+productArr[i].Price;
+                sum+=parseInt(productArr[i].Price);
+            }
+        }
+        /*d1.style.display="block";*/
+        d1.style.visibility="visible";
+        d1.innerHTML=str1+"<br>Bill="+sum;
+        }
+
+        </script>
+    </body>
+</html>

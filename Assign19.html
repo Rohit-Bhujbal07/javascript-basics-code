@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="d1"></div>
+        <script>
+            var d1=document.getElementById("d1");
+            var str = "Bitcode";
+            var output = "";
+            
+            for (var i = 0; i < str.length; i++) {
+              if (i % 2 === 0) {
+                output += str.charAt(i);
+              } else {
+                output += String.fromCharCode(str.charCodeAt(i) + 1);
+              }
+            }
+            
+            document.getElementById("d1").textContent = output;
+
+
+          </script>
+    </body>
+</html>

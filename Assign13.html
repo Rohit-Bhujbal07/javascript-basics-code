@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <ul id="list">
+            <li id="li1">SayHello</li>
+            <li id="li2">backgroundColor</li>
+            <li id="li3">fontColor</li>
+            <li id="li4">Bold</li>
+            <li id="li5">Italics</li>
+
+         </ul>
+         <script>
+             
+             var uli=document.getElementById("list");
+             ul1=addEventListener('click',fun1,false);
+             function fun1(event){
+                targetId=event.target.id;
+                console.log(targetId);
+                switch(targetId){
+                    case 'li1': alert("Hello Bitcode");break;
+                    case 'li2' : uli.style.backgroundColor='yellow';break;
+                    case 'li3' : uli.style.color='blue';break;
+                    case 'li4' : uli.style.fontweight='bold';break;
+                    case 'li5' : uli.style.fontStyle='Italic';break;
+                    default:console.log("invalid option");
+                }
+                
+             }
+
+
+
+         </script>
+   </body>
+</html>

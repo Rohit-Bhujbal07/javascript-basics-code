@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        Name:<input type="text" id="txtName"><br>
+        Birthdate:<input type="date" id="txtBirthdate"><br>
+    
+        
+        <input type="button" value="Click" onclick="fun()" id="btn1">
+        <div id="d1"></div>
+
+        <script>
+         var d1=document.getElementById("d1");
+            
+            function fun(){
+                var name=document.getElementById("txtName").value;
+                var birthdate=document.getElementById("txtBirthdate").value;
+                console.log(name,birthdate);
+                
+                var today = new Date();
+                var birthdateObj = new Date(birthdate);
+                var age = today.getFullYear() - birthdateObj.getFullYear();
+                var monthDiff = today.getMonth() - birthdateObj.getMonth();
+                var dateDiff = today.getDate() - birthdateObj.getDate();
+                console.log(age,monthDiff,dateDiff);
+            
+                document.getElementById("d1").innerHTML ="Name: "+name+"<br> Birthdate: "+birthdate+"<br> Age: "+age+monthDiff+dateDiff;
+                if(today.getDate() === birthdateObj.getDate() && today.getMonth() === birthdateObj.getMonth()){
+                    d1.innerHTML +="<br> Happy Birthday to you!!";
+
+                }
+            }
+        </script>
+    </body>
+
+</html>

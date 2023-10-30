@@ -1,0 +1,85 @@
+<html>
+    <head>
+
+    </head>
+    <style>
+
+    </style>
+    <body>
+        UserName: <input type="text" id="txtUsername"><br>
+        Password: <input type="password" id="txtPassword"><br>
+        City: <input type="text" id="txtCity"><br>
+        Subject: <br><input type="checkbox" value="angular">Angular<br>
+                 <input type="checkbox" value="react">React<br>
+                 <input type="checkbox" value="php">PHP<br>
+                 <input type="checkbox" value="javascript">Javaascript<br>
+
+        Result: <input type="radio" name="result" value="pass">Pass
+                <input type="radio" name="result" value="fail">Fail<br>   
+             <input type="button" value="Submit" onclick="fun()">
+             <table id="tb1" border="1"></table>
+        
+        <script>
+            function funCheck(arr){
+            var str="";
+            var checkArr= new Array();
+            for(i=0;i<arr.length;i++){
+                if(arr[i].checked){
+                    str+=arr[i].value+",";
+                }
+            }
+            return str;
+        }
+           
+        function funSelect(arr){
+            var str="";
+            var checkArr= new Array();
+            for(i=0;i<arr.length;i++){
+                if(arr[i].checked){
+                    str+=arr[i].value;
+                }
+            }
+            return str;
+        }
+        
+
+
+
+           function fun(){
+            
+            
+            var username=document.getElementById("txtUsername").value;
+            var passwd=document.getElementById("txtPassword").value;
+            var city=document.getElementById("txtCity").value;
+            var check = document.querySelectorAll('[type="checkbox"]');
+            var select = document.querySelectorAll('[type="radio"]');
+
+            var checkSubjects = funCheck(Array.from(check));
+            var selectOption =funSelect(Array.from(select));
+           
+            console.log(username,passwd,city);
+
+            var str="";
+            str += "<tr><td>Username</td><td>"+username+"</td></tr>";
+            str += "<tr><td>Password</td><td>"+passwd+"</td></tr>";
+            str += "<tr><td>City</td><td>"+city+"</td></tr>";
+            str += "<tr><td>Subject</td><td>"+checkSubjects+"</td></tr>";
+            str += "<tr><td>Result</td><td>"+selectOption+"</td></tr>";
+            
+            
+            
+            document.getElementById("tb1").innerHTML = str;
+
+            var check=document.querySelectorAll('[type="checkbox"]');
+            var checkSubjects=funCheck(Array.from(check));
+            var tb1=document.querySelector('table');
+           // document.getElementById("tb1").innerHTML+="<br>"+checkSubjects;
+
+            var select=document.querySelectorAll('[type="radio"]');
+            var selectOption=funSelect(Array.from(select));
+            var tb1=document.querySelector('table');
+            
+        }
+        </script>
+    </body>
+</html>
